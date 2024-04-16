@@ -8,12 +8,18 @@ if st.button("Go to /grafy"):
     st.markdown('<meta http-equiv="refresh" content="0; URL=/grafy" />', unsafe_allow_html=True)
 
 
+
+
+# Button to clear cache
+if st.button("Clear Cache"):
+    st.cache_data.clear()
+
 from streamlit_gsheets import GSheetsConnection
 
-#"gsheets"
 conn = st.connection('gsheets', type=GSheetsConnection)
 
 df = conn.read()
+    
 column_name_mapping = {
     'Pohlavie ': 'Pohlavie',
     'Kde bývaš? ': 'Location',
