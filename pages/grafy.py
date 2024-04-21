@@ -385,7 +385,7 @@ with tab5:
                 x=grouped_df['Preferred Career Field Short'],
                 y=grouped_df['Count'],
                 name=school,
-                marker_color='blue'
+                
             ))
             
             # Update layout
