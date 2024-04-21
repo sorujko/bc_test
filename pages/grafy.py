@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
 from streamlit_gsheets import GSheetsConnection
-
+import random
 
 conn = st.connection("gsheets", type=GSheetsConnection)
 
@@ -385,7 +385,7 @@ with tab5:
                 x=grouped_df['Preferred Career Field Short'],
                 y=grouped_df['Count'],
                 name=school,
-                
+                marker_color="#{:06x}".format(random.randint(0, 0xFFFFFF))
             ))
             
             # Update layout
