@@ -21,8 +21,10 @@ conn = st.connection('gsheets', type=GSheetsConnection)
 df = conn.read()
     
 column_name_mapping = {
-    'Pohlavie ': 'Pohlavie',
     'Kde bývaš? ': 'Location',
+    'Pohlavie ' : 'Pohlavie',
+    'Z akého okresu pochádzaš?\n(napr. Pezinok)' : 'Bydlisko(okres)',
+    'Názov školy \n(napríklad: ZŠ Vajanského Modra)' : 'Škola',
     'Ktorý ročník ZŠ navštevuješ?': 'Grade',
     'Čo najradšej robíš vo svojom voľnom čase?': 'Free Time Activity',
     'Aký je tvoj obľúbený predmet v škole?': 'Favorite School Subject',
@@ -31,7 +33,7 @@ column_name_mapping = {
     'Kam by si najradšej cestoval/-a?': 'Dream Travel Destination',
     'Ktorú aktivitu alebo hru hráš veľmi dobre?': 'Skilled Activity/Game',
     'Kedy si bol/-a hrdý/-á na niečo, čo si dokázal/-a urobiť?': 'Proud Achievement',
-    'Čo je podľa teba najdôležitejšie na svete?\n(vyber maximálne 3 odpovede)': 'Top World Priority',
+    'Čo je podľa teba najdôležitejšie na svete?': 'Top World Priority',
     'Prečo je dôležité pomáhať iným?': 'Importance of Helping Others',
     'Čo by si chcel/-a dosiahnuť, aby svet bol lepším miestom?': 'Contribution to a Better World',
     'Ktorá oblasť povolaní sa ti páči?': 'Preferred Career Field',
@@ -46,4 +48,6 @@ df['Preferred Career Field Short'] = df['Preferred Career Field'].str.split('(')
 df.drop("Časová pečiatka",axis=1, inplace=True)
 df = df.dropna(how='all')
 # Print results.
+
+
 st.dataframe(df)
