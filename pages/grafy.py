@@ -349,7 +349,8 @@ with tab5:
     if skola_rozdelit == False:
         fig = go.Figure()
         for skola in grouped_df['Škola'].unique():
-            color = 'blue'  # Default color
+            # Generating a random color for each school
+            color = '#' + ''.join([random.choice('0123456789ABCDEF') for i in range(6)])
             data = grouped_df[grouped_df['Škola'] == skola]
             fig.add_trace(go.Bar(
                 x=data['Preferred Career Field Short'],
@@ -380,12 +381,15 @@ with tab5:
             grouped_df = filtered_df['Preferred Career Field Short'].value_counts().reset_index()
             grouped_df.columns = ['Preferred Career Field Short', 'Count']
             
+            # Generating a random color for each school
+            color = '#' + ''.join([random.choice('0123456789ABCDEF') for i in range(6)])
+            
             # Create bar graph
             fig = go.Figure(go.Bar(
                 x=grouped_df['Preferred Career Field Short'],
                 y=grouped_df['Count'],
                 name=school,
-                marker_color="#{:06x}".format(random.randint(0, 0xFFFFFF))
+                marker_color=color
             ))
             
             # Update layout
